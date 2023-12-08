@@ -212,34 +212,4 @@ function generateAuthors() {
 }
 generateAuthors();
 
-function authorClickHandler(event) {
-  event.preventDefault();
-  const clickedElement = this;
-
-  const href = clickedElement.getAttribute('href');
-  const author = href.replace('#author-', '');
-  const activeAuthorLinks = document.querySelectorAll(
-    'a.active[href^="#author-"]'
-  );
-
-  for (let activeAuthorLink of activeAuthorLinks) {
-    activeAuthorLink.classList.remove('active');
-  }
-
-  const clickedAuthors = document.querySelectorAll('a[href="' + href + '"]');
-
-  for (let clickedAuthor of clickedAuthors) {
-    clickedAuthor.classList.add('active');
-  }
-  generateTitleLinks('[data-author="' + author + '"]');
-}
-
-function addClickListenersToAuthors() {
-  const linkAuthors = document.querySelectorAll('a[href^="#author-"]');
-
-  for (let linkAuthor of linkAuthors) {
-    linkAuthor.addEventListener('click', authorClickHandler);
-  }
-}
-addClickListenersToAuthors();
 
